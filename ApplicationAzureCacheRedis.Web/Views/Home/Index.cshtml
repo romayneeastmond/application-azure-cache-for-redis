@@ -1,0 +1,44 @@
+﻿@model List<ApplicationAzureCacheRedis.Models.Country>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">
+        Welcome to the Azure Cache for Redis Test
+    </h1>
+</div>
+<div class="row mt-4">
+    <div class="col">
+        <p>
+            This project uses StackExchange.Redis and Azure Cache for Redis to cache simple messages and serialized objects. If a successful connection has been
+            made to the local database or Azure Cache for Redis, then a list of countries should appear below. 
+        </p>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col">
+        <table class="table mb-4">
+            <tr>
+                <td>
+                    @Html.ActionLink("Redis Cache Test", "Test")
+                </td>
+                <td>
+                    @Html.ActionLink("Get Countries from Database", "GetDatabase")
+                </td>
+                <td>
+                    @Html.ActionLink("Get Countries from Redis Cache", "GetCache")
+                </td>
+                <td>
+                    @Html.ActionLink("Clear Redis Cache", "Clear")
+                </td>
+                <td>
+                    @Html.ActionLink("Rebuild Database", "RebuildDatabase")
+                </td>
+            </tr>
+        </table>
+
+        @Html.Partial("_CountriesList", Model)
+    </div>
+</div>

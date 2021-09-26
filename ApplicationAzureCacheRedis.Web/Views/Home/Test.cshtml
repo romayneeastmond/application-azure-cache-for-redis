@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Azure Cache for Redis Test";
+}
+
+@if (ViewBag.Success)
+{
+    <div class="row">
+        <div class="col">
+            <h4>A simple example with Azure Cache for Redis on ASP.NET.</h4>
+
+            <div class="mt-4">
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th style="width: 280px;">Command</th>
+                        <th>Result</th>
+                    </tr>
+                    <tr>
+                        <td>PING Test </td>
+                        <td>@ViewBag.PingResult</td>
+                    </tr>
+                    <tr>
+                        <td>Get Message Test (Empty First Run)</td>
+                        <td>@Html.Raw(ViewBag.GetMessageTest1)</td>
+                    </tr>
+                    <tr>
+                        <td>Set Message Test</td>
+                        <td>@ViewBag.SetMessage</td>
+                    </tr>
+                    <tr>
+                        <td>Get Message Test Result</td>
+                        <td>@Html.Raw(ViewBag.GetMessageTest2)</td>
+                    </tr>
+                    <tr>
+                        <td>Client List</td>
+                        <td class="small">@Html.Raw(ViewBag.ClientListTest)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col">
+            Azure Cache for Redis unavailable.
+        </div>
+    </div>
+}

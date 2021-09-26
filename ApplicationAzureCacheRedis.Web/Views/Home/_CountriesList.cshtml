@@ -1,0 +1,34 @@
+﻿@model List<ApplicationAzureCacheRedis.Models.Country>
+
+@{
+    Layout = null;
+}
+
+@if (Model.Count > 0)
+{
+    <div class="small mb-2">@ViewBag.Message</div>
+
+    <table class="table table-bordered table-striped small">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Continent</th>
+                <th>Region</th>
+                <th style="text-align: right">Population</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Code</td>
+                    <td>@item.Name</td>
+                    <td>@item.Continent</td>
+                    <td>@item.Region</td>
+                    <td style="text-align: right">@item.Population</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
