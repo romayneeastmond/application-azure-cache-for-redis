@@ -57,4 +57,5 @@ packages
 # Private Settings
 CacheSecrets.Development.config
 PublishProfiles
+ServiceDependencies
 profile.arm.json

@@ -240,6 +240,7 @@
     <Content Include="Views\Home\GetCache.cshtml" />
     <Content Include="Views\Home\Clear.cshtml" />
     <Content Include="Views\Home\RebuildDatabase.cshtml" />
+    <None Include="Properties\PublishProfiles\dev-aspnet-azure-cache-redis-demo - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApplicationAzureCacheRedis.Models\ApplicationAzureCacheRedis.Models.csproj">
