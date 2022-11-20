@@ -30,18 +30,28 @@ namespace ApplicationAzureCacheRedis.Web.Controllers
 
         public ActionResult Clear()
         {
-            var cache = AzureCacheRedisWrapper.Get();
-
-            ViewBag.Message = "Azure Cache for Redis has not been cleared.";
-
-
-            if (cache != null)
+            try
             {
-                ViewBag.Message = "Azure Cache for Redis cleared.";
+                ViewBag.Message = "Azure Cache for Redis has not been cleared.";
 
-                cache.KeyDelete("Message");
-                cache.KeyDelete("CountriesList");
-                cache.KeyDelete("countriesList");
+                var cache = AzureCacheRedisWrapper.Get();
+
+                if (cache != null)
+                {
+                    ViewBag.Message = "Azure Cache for Redis cleared.";
+
+                    cache.KeyDelete("Message");
+                    cache.KeyDelete("CountriesList");
+                    cache.KeyDelete("countriesList");
+                }
+                else
+                {
+                    ViewBag.Message = "Azure Cache for Redis unavailable.";
+                }
+            }
+            catch
+            {
+                ViewBag.Message = "Azure Cache for Redis unavailable.";
             }
 
             return View();
@@ -81,13 +91,11 @@ namespace ApplicationAzureCacheRedis.Web.Controllers
             return View(countries);
         }
 
-
         public ActionResult RebuildDatabase()
         {
             var db = new CountryDbContext();
 
-            db.Database.Delete();
-            db.Database.Initialize(true);
+            CountryInitalizer.Initialize(db);
 
             ViewBag.Message = "Rebuilt local database. This operation does not change the Azure Cache for Redis.";
 
@@ -126,7 +134,7 @@ namespace ApplicationAzureCacheRedis.Web.Controllers
             }
             catch
             {
-                ///ignored
+                //ignored
             }
 
             return View();
